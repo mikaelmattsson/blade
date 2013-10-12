@@ -1,83 +1,72 @@
-<?php 
+<?php
 /**
- *
- * @package   Blade
- * @author    Mikael Mattsson <mikael@weblyan.se>
- *
- * @wordpress-plugin
- * Plugin Name: Blade
- * Plugin URI:  
- * Description: The Blade template engine developed by Taylor Otwell and used in Laravel. Enables the use of Blade in your template files.
- * Version:     0.2.2
- * Author:      Mikael Mattsson
- * Author URI:  http://weblyan.se
+*
+* Plugin Name: Blade
+* Plugin URI: https://github.com/MikaelMattsson/blade
+* Description: The Blade template engine developed by Taylor Otwell and used in Laravel. Enables the use of Blade in your template files.
+* Version: 0.2.2
+* Author: Mikael Mattsson
+* Author URI: http://weblyan.se
+*
+* @package Blade
+* @author Mike Mattsson <mikael@weblyan.se>
+*/
+
+
+/*
+|-----------------------------------------------------------------------------------
+| Set configuration settings
+|-----------------------------------------------------------------------------------
+| Set important configuration settings
+|
+*/
+ini_set( 'display_errors', 1 );
+
+
+/*
+|-----------------------------------------------------------------------------------
+| Define Principal Constants
+|-----------------------------------------------------------------------------------
+|
+| These are constans to refarece folders in the plugin
+|
+*/
+
+/**
+ * Plugin Root
  */
- 
-define('EXT', '.php');
-define('CRLF', "\r\n");
-define('BLADE_EXT', '.php');
+define( 'WP_BLADE_ROOT', dirname( __FILE__ ) . '/' );
 
-if ( ! defined('DS')){
-	define('DS', DIRECTORY_SEPARATOR);
-}
+/**
+* Path for the application foler inside the theme
+*/
+define( 'APP_PATH', WP_BLADE_ROOT . 'application/' );
 
-define('DEFAULT_BUNDLE', 'application');
-define('MB_STRING', (int) function_exists('mb_get_info'));
-$blade_storage_path = dirname(__FILE__).'/storage/views';
+/**
+ * Path of assets
+ */
+define( 'ASSETS_PATH', WP_BLADE_ROOT . 'assets/' );
 
-require_once('laravel/blade.php');
-require_once('laravel/section.php');
-require_once('laravel/view.php');
-require_once('laravel/event.php');
-require_once('wpblade.php');
-require_once('helpers.php');
+/**
+* Path for the config folder
+*/
+define( 'CONFIG_PATH', APP_PATH . 'config/' );
 
+/**
+* Path for libraries
+*/
+define( 'LIBRARIES_PATH', APP_PATH . 'lib/' );
 
-add_action('template_include', 'template_include_blade');
+/*
+|-------------------------------------------------------------------------
+| Start the plugin by instanciating the cain controller
+|-------------------------------------------------------------------------
+|
+| In order to bootstrap the application we've require the initialize file
+| which loads all the necessary controllers, helpers, models and other files.
+|
+| After that, instanciate the main controller which will add actions and the like.
+*/
 
-$bladedTemplate = '';
-
-function template_include_blade( $template ) {
-
-	global $bladedTemplate;
-	global $blade_storage_path;
-
-	if($bladedTemplate)
-		return $bladedTemplate;
-
-	if(!$template)
-		return $template; //Noting to do here. Come back later.
-
-	require_once('paths.php');
-	
-	Laravel\Blade::sharpen();
-	$view = Laravel\View::make('path: '.$template,array());
-
-	$pathToCompiled = Laravel\Blade::compiled($view->path);
-
-	if ( ! file_exists($pathToCompiled) or Laravel\Blade::expired($view->view, $view->path)){
-		file_put_contents($pathToCompiled, Laravel\Blade::compile($view));
-	}
-
-	$view->path = $pathToCompiled;
-
-	if ( $error = error_get_last() ) {
-	    //var_dump($error);
-	    //exit;
-	}
-
-	return $bladedTemplate = $view->path;
-}
-
-
-add_filter('index_template','filter_get_query_template');
-add_filter('page_template','filter_get_query_template');
-
-function filter_get_query_template($template){
-	return template_include_blade( $template );
-}
-
-function blade_set_storage_path($path){
-	global $blade_storage_path;
-	$blade_storage_path = $path;
-}
+require_once ( CONFIG_PATH . '/initialize.php' );
+Main_Controller::make();

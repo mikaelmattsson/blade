@@ -25,7 +25,7 @@ $paths['public'] = 'public';
 // --------------------------------------------------------------
 // Change to the current working directory.
 // --------------------------------------------------------------
-chdir(__DIR__);
+chdir ( __DIR__ );
 
 // --------------------------------------------------------------
 // Define the directory separator for the environment.
@@ -53,11 +53,11 @@ foreach ($paths as $name => $path)
 
 /**
  * A global path helper function.
- * 
+ *
  * <code>
  *     $storage = path('storage');
  * </code>
- * 
+ *
  * @param  string  $path
  * @return string
  */
@@ -68,7 +68,7 @@ function path($path)
 
 /**
  * A global path setter function.
- * 
+ *
  * @param  string  $path
  * @param  string  $value
  * @return void

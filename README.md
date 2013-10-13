@@ -5,6 +5,9 @@ Brings Laravel's great template engine, Blade, to WordPress. Just install and st
 
 Blade is the template engine for Laravel, a very popular php framework, developed by Taylor Otwell. This plugin brings the same template engine to WordPress. Using a template engine will result in much cleaner template files and quicker development. Normal php can still be used in the template files. The plugin also adds a WordPress specific snippet to blade. Check out the examples for more info.
 
+**WordPress repository**: 
+[Blade](http://wordpress.org/plugins/blade/)
+
 ### Echo/print
 
 **Normal**

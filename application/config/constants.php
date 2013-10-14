@@ -17,22 +17,22 @@
 /**
 * Path for the helpers folder
 */
-define( 'HELPERS_PATH', APP_PATH . 'helpers/' );
+define( 'WP_BLADE_HELPERS_PATH', WP_BLADE_APP_PATH . 'helpers/' );
 
 /**
 * Path for the models
 */
-define( 'MODELS_PATH', APP_PATH . 'models/' );
+define( 'WP_BLADE_MODELS_PATH', WP_BLADE_APP_PATH . 'models/' );
 
 /**
 * Path for the controllers
 */
-define( 'CONTROLLERS_PATH', APP_PATH . 'controllers/' );
+define( 'WP_BLADE_CONTROLLERS_PATH', WP_BLADE_APP_PATH . 'controllers/' );
 
 /**
 * Path for views
 */
-define( 'VIEWS_PATH', APP_PATH . 'views/' );
+define( 'WP_BLADE_VIEWS_PATH', WP_BLADE_APP_PATH . 'views/' );
 
 /**
  * Storage path

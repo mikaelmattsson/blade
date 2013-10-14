@@ -8,7 +8,7 @@
 /**
 * Main controller
 */
-class Main_Controller {
+class WP_Blade_Main_Controller {
 
 	/**
 	 * Main model
@@ -21,7 +21,7 @@ class Main_Controller {
 	function __construct() {
 
 		// Instantiate main model
-		$this->main_model = new Main_Model();
+		$this->main_model = new WP_Blade_Main_Model();
 
 		// Globalize "blade_storage_path"
 		$GLOBALS[ 'blade_storage_path' ] = BLADE_STORAGE_PATH;

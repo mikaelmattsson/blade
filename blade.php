@@ -40,22 +40,22 @@ define( 'WP_BLADE_ROOT', dirname( __FILE__ ) . '/' );
 /**
 * Path for the application foler inside the theme
 */
-define( 'APP_PATH', WP_BLADE_ROOT . 'application/' );
+define( 'WP_BLADE_APP_PATH', WP_BLADE_ROOT . 'application/' );
 
 /**
  * Path of assets
  */
-define( 'ASSETS_PATH', WP_BLADE_ROOT . 'assets/' );
+define( 'WP_BLADE_ASSETS_PATH', WP_BLADE_ROOT . 'assets/' );
 
 /**
 * Path for the config folder
 */
-define( 'CONFIG_PATH', APP_PATH . 'config/' );
+define( 'WP_BLADE_CONFIG_PATH', WP_BLADE_APP_PATH . 'config/' );
 
 /**
 * Path for libraries
 */
-define( 'LIBRARIES_PATH', APP_PATH . 'lib/' );
+define( 'WP_BLADE_LIBRARIES_PATH', WP_BLADE_APP_PATH . 'lib/' );
 
 /*
 |-------------------------------------------------------------------------
@@ -68,5 +68,5 @@ define( 'LIBRARIES_PATH', APP_PATH . 'lib/' );
 | After that, instanciate the main controller which will add actions and the like.
 */
 
-require_once ( CONFIG_PATH . '/initialize.php' );
-Main_Controller::make();
+require_once ( WP_BLADE_CONFIG_PATH . '/initialize.php' );
+WP_Blade_Main_Controller::make();

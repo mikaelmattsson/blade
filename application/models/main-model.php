@@ -8,7 +8,7 @@
 /**
 * Main model
 */
-class Main_Model {
+class WP_Blade_Main_Model {
 
 	/**
 	 * Return a new class instance
@@ -37,7 +37,7 @@ class Main_Model {
 		if( ! $template )
 			return $template; // Noting to do here. Come back later.
 
-		require_once( CONFIG_PATH . 'paths.php' );
+		require_once( WP_BLADE_CONFIG_PATH . 'paths.php' );
 
 		Laravel\Blade::sharpen();
 		$view = Laravel\View::make( 'path: ' . $template, array() );

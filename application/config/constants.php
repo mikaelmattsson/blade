@@ -37,7 +37,8 @@ define( 'WP_BLADE_VIEWS_PATH', WP_BLADE_APP_PATH . 'views/' );
 /**
  * Storage path
  */
-define( 'BLADE_STORAGE_PATH', WP_BLADE_ROOT . 'storage/views' );
+//define( 'BLADE_STORAGE_PATH', WP_BLADE_ROOT . 'storage/views' );
+$GLOBALS[ 'blade_storage_path' ] = WP_BLADE_ROOT . 'storage/views';
 
 //------------------------------
 //  General constants

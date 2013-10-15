@@ -24,7 +24,7 @@ class WP_Blade_Main_Controller {
 		$this->main_model = new WP_Blade_Main_Model();
 
 		// Globalize "blade_storage_path"
-		$GLOBALS[ 'blade_storage_path' ] = BLADE_STORAGE_PATH;
+		//$GLOBALS[ 'blade_storage_path' ] = BLADE_STORAGE_PATH;
 
 		// Bind to template include action
 		add_action( 'template_include', array( $this->main_model, 'template_include_blade' ) );

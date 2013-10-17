@@ -5,6 +5,7 @@ class WP_Blade {
 
 	protected static $compilers = array(
 		'wpquery',
+		'wpposts',
 		'wpempty',
 		'wpend',
 		'debug',
@@ -23,6 +24,14 @@ class WP_Blade {
 		}
 
 		return $value;
+	}
+
+	/**
+	 *
+	 */
+	protected static function compile_wpposts( $value ) {
+
+		return str_replace('@wpposts', '<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>', $value);
 	}
 
 	/**

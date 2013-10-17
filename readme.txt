@@ -3,7 +3,7 @@ Contributors: konvent
 Tags: Blade, Laravel, Template, Engine
 Requires at least: 3.0.0
 Tested up to: 3.6.1
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,8 +42,21 @@ can be replaced with...
     <img src="{{bloginfo( 'stylesheet_directory' )}}/images/thumbnail-default.jpg" />
 @endif`
 
-
 = the loop =
+`<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <a href="{{the_permalink()}}">{{the_title()}}</a><br>
+<?php endwhile; else: ?>
+        <p>404</p>
+<?php endif; ?>`
+ 
+can be replaced with... 
+`@wpposts
+       <a href="{{the_permalink()}}">{{the_title()}}</a><br>
+@wpempty
+        <p>404</p>
+@wpend`
+
+= wordpress query =
 `<ul>
 <?php $query = new WP_Query( array('post_type' => 'post') ); ?>
 <?php if ( $query->have_posts() ) : ?>
@@ -63,6 +76,10 @@ can be replaced with...
         <li>{{ __('Sorry, no posts matched your criteria.') }}</li>
 @wpend
 </ul>`
+
+
+
+
 
 = Including files =
 
@@ -89,6 +106,8 @@ page.php:
 
 See the [Blade documentation](http://three.laravel.com/docs/views/templating "Laravel 3 Templating") for more info
 
+Contribute on github: [github.com/MikaelMattsson/blade](https://github.com/MikaelMattsson/blade)
+
 == Installation ==
 
 1. Upload folder `blade` to the `/wp-content/plugins/` directory
@@ -103,6 +122,12 @@ It is recommended thay you change the path to the location where the compiled vi
 
 
 == Changelog ==
+
+= 0.3.2 =
+* Added @wpposts
+
+= 0.3.1 =
+* Changed the structure of all files.
 
 = 0.2.0 =
 * The view templates are now loaded differently.

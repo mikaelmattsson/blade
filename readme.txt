@@ -44,7 +44,7 @@ can be replaced with...
 
 = the loop =
 `<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <a href="{{the_permalink()}}">{{the_title()}}</a><br>
+        <a href="<?php the_permalink() ?>"><?php the_title() ?></a><br>
 <?php endwhile; else: ?>
         <p>404</p>
 <?php endif; ?>`

@@ -118,7 +118,9 @@ Contribute on github: [github.com/MikaelMattsson/blade](https://github.com/Mikae
 = More options =
 
 It is recommended thay you change the path to the location where the compiled views are stored to within your theme. This will fix problems with wpml. To do so, put the following code in your theme folder and create the folder/directory “bladecache” in your theme folder.
-`blade_set_storage_path(get_template_directory().'/bladecache');`
+`if(function_exists('blade_set_storage_path')){
+    blade_set_storage_path(get_template_directory().'/bladecache');
+}`
 
 
 == Changelog ==

@@ -12,17 +12,6 @@
 * @author Mike Mattsson, Pablo Vallejo <mikael@weblyan.se>
 */
 
-
-/*
-|-----------------------------------------------------------------------------------
-| Set configuration settings
-|-----------------------------------------------------------------------------------
-| Set important configuration settings
-|
-*/
-ini_set( 'display_errors', 1 );
-
-
 /*
 |-----------------------------------------------------------------------------------
 | Define Principal Constants

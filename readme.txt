@@ -2,8 +2,8 @@
 Contributors: konvent
 Tags: Blade, Laravel, Template, Engine
 Requires at least: 3.0.0
-Tested up to: 3.6.1
-Stable tag: 0.3.2
+Tested up to: 3.7
+Stable tag: 0.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,9 @@ It is recommended thay you change the path to the location where the compiled vi
 
 
 == Changelog ==
+
+= 0.3.3 =
+* Compatibility update for PHP 5.5
 
 = 0.3.2 =
 * Added @wpposts

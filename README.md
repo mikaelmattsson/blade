@@ -86,6 +86,28 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 </ul>
 ```
 
+
+### Advanced Custom Fields
+**Normal**
+```php
+<ul>
+    <?php if( get_field( 'images' ) ): ?>
+        <?php while( has_sub_field( 'images' ) ): ?>
+            <li><img src="<?php the_sub_field( 'image' ) ?>" /></li>
+        <?php endwhile; ?>
+    <?php endif; ?>
+</ul>
+```
+
+**Blade**
+```php
+<ul>
+    @acfrepeater('images')
+        <li>{{ get_sub_field( 'image' ) }}</li>
+    @acfend
+</ul>
+```
+
 ### Including files
 
 Files included with functions, e.g. `the_header()`, will not be compiled by Blade, however the php code in the file is still executed. To include a file with blade use:
@@ -118,6 +140,7 @@ Note that you should not type “.php”.
     <p>Lorem ipsum</p>
 @endsection
 ```
+
 
 ## Documentation
 

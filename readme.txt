@@ -2,8 +2,8 @@
 Contributors: konvent
 Tags: Blade, Laravel, Template, Engine
 Requires at least: 3.0.0
-Tested up to: 3.7
-Stable tag: 0.3.3
+Tested up to: 3.8
+Stable tag: 0.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,84 +11,91 @@ Brings Laravel's great template engine, Blade, to Wordpress. Just install and st
 
 == Description ==
 
-Note that the plugin is in beta and changes made in the future could result in your current code no longer working.
-
 Blade is the template engine for Laravel, a very popular php framework, developed by Taylor Otwell. This plugin brings the same template engine to wordpress.
 Using a template engine will result in much cleaner template files and quicker development. Normal php can still be used in the template files.
 The plugin also adds a wordpress specific snippet to blade. Check out the examples for more info.
 
 = echo/print =
 
-`<?php echo $foo ?>`
-can be replaced with... 
 `{{$foo}}`
-
-= post data =
-
-`<?php the_title() ?>`
-can be replaced with... 
-`{{the_title()}}`
+Turns into...
+`<?php echo $foo ?>`
 
 = if() =
-`<?php if(has_post_thumbnail()) : ?>
-    <?php the_post_thumbnail() ?>
-<?php else: ?>
-    <img src="<?php bloginfo( 'stylesheet_directory' ) ?>/images/thumbnail-default.jpg" />
-<?php endif; ?>`
-can be replaced with... 
+
 `@if(has_post_thumbnail())
     {{the_post_thumbnail() }}
 @else 
-    <img src="{{bloginfo( 'stylesheet_directory' )}}/images/thumbnail-default.jpg" />
+    <img src="{{bloginfo( 'template_url' )}}/images/thumbnail-default.jpg" />
 @endif`
+Turns into...
+`<?php if(has_post_thumbnail()) : ?>
+    <?php the_post_thumbnail() ?>
+<?php else: ?>
+    <img src="<?php bloginfo( 'template_url' ) ?>/images/thumbnail-default.jpg" />
+<?php endif; ?>`
 
 = the loop =
-`<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <a href="<?php the_permalink() ?>"><?php the_title() ?></a><br>
-<?php endwhile; else: ?>
-        <p>404</p>
-<?php endif; ?>`
- 
-can be replaced with... 
+
 `@wpposts
-       <a href="{{the_permalink()}}">{{the_title()}}</a><br>
+    <a href="{{the_permalink()}}">{{the_title()}}</a><br>
 @wpempty
-        <p>404</p>
+    <p>404</p>
 @wpend`
+Turns into...
+`<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <a href="<?php the_permalink() ?>"><?php the_title() ?></a><br>
+<?php endwhile; else: ?>
+    <p>404</p>
+<?php endif; ?>`
+
 
 = wordpress query =
+
+`<ul>
+@wpquery(array('post_type' => 'post'))
+    <li><a href="{{the_permalink()}}">{{the_title()}}</a></li>
+@wpempty
+    <li>{{ __('Sorry, no posts matched your criteria.') }}</li>
+@wpend
+</ul>`
+Turns into....
 `<ul>
 <?php $query = new WP_Query( array('post_type' => 'post') ); ?>
 <?php if ( $query->have_posts() ) : ?>
-        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+    <?php while ( $query->have_posts() ) : $query->the_post(); ?>
         <li><a href="<?php the_permalink() ?>"> <?php the_title() ?> </a></li>
-        <?php endwhile; ?>
+    <?php endwhile; ?>
 <?php else : ?>
-        <li><?php _e('Sorry, no posts matched your criteria.') ?></li>
+    <li><?php _e('Sorry, no posts matched your criteria.') ?></li>
 <?php endif; wp_reset_postdata(); ?>
 </ul>`
- 
-can be replaced with... 
+
+= Advanced Custom Fields =
+
 `<ul>
-@wpquery(array('post_type' => 'post'))
-        <li><a href="{{the_permalink()}}">{{the_title()}}</a></li>
-@wpempty
-        <li>{{ __('Sorry, no posts matched your criteria.') }}</li>
-@wpend
-</ul>`
+    @acfrepeater('images')
+        <li>{{ get_sub_field( 'image' ) }}</li>
+    @acfend
+</ul>
+`
+Turns into...
+`<ul>
+    <?php if( get_field( 'images' ) ): ?>
+        <?php while( has_sub_field( 'images' ) ): ?>
+            <li><img src="<?php the_sub_field( 'image' ) ?>" /></li>
+        <?php endwhile; ?>
+    <?php endif; ?>
+</ul>
+`
 
+= Including other templates =
 
-
-
-
-= Including files =
-
-Files included with functions, e.g. the_header(), will not be compiled by Blade, however the php code in the file is still executed.
 To include a file with blade use:
 `@include('header')`
-Note that you should not type “.php”.
+Note that you should not type “.php”. Files included with functions, e.g. the_header(), will not be compiled by Blade, however the php code in the file is still executed.
 
-You can also use layouts.
+= Layouts =
 
 master.php:
 `<html>
@@ -104,7 +111,7 @@ page.php:
 @endsection`
 
 
-See the [Blade documentation](http://three.laravel.com/docs/views/templating "Laravel 3 Templating") for more info
+See the [Blade documentation](http://three.laravel.com/docs/views/templating "Laravel 3 Templating") for more info.
 
 Contribute on github: [github.com/MikaelMattsson/blade](https://github.com/MikaelMattsson/blade)
 
@@ -124,6 +131,9 @@ It is recommended thay you change the path to the location where the compiled vi
 
 
 == Changelog ==
+
+= 0.3.4 =
+* Added acf repeater
 
 = 0.3.3 =
 * Compatibility update for PHP 5.5

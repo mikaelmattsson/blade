@@ -3,7 +3,7 @@ Contributors: konvent
 Tags: Blade, Laravel, Template, Engine
 Requires at least: 3.0.0
 Tested up to: 3.8
-Stable tag: 0.3.4
+Stable tag: 0.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,17 +132,20 @@ It is recommended thay you change the path to the location where the compiled vi
 
 == Changelog ==
 
+= 0.3.5 =
+* Added support for child/parent-themes (perholmang)
+
 = 0.3.4 =
-* Added acf repeater
+* Added acf repeater (jaggyspaghetti)
 
 = 0.3.3 =
-* Compatibility update for PHP 5.5
+* Compatibility update for PHP 5.5 (relu)
 
 = 0.3.2 =
-* Added @wpposts
+* Added @wpposts (mykebates)
 
 = 0.3.1 =
-* Changed the structure of all files.
+* Changed the structure of all files. (PabloVallejo)
 
 = 0.2.0 =
 * The view templates are now loaded differently.

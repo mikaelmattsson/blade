@@ -107,7 +107,7 @@ class View implements ArrayAccess {
 			$this->path = $this->path($view);
 		}
 
-		
+
 	}
 
 	/**
@@ -120,21 +120,21 @@ class View implements ArrayAccess {
 	 */
 	public static function exists($view, $return_path = false)
 	{
-
 		$view = str_replace('.', '/', $view);
-		
-		$directory = get_template_directory() . DS;
-		
-		$path = $directory.$view.BLADE_EXT;
-		
-		// We delegate the determination of view paths to the view loader event
-		// so that the developer is free to override and manage the loading
-		// of views in any way they see fit for their application.
-		//$path = Event::until(static::loader, array($bundle, $view));
-		
-		if (file_exists($path))
+
+		$search_paths = array(
+			get_stylesheet_directory(),
+			get_template_directory()
+		);
+
+		foreach ($search_paths as $dir)
 		{
-			return $return_path ? $path : true;
+			$path = $dir.DS.$view.BLADE_EXT;
+
+			if (file_exists($path))
+			{
+				return $return_path ? $path : true;
+			}
 		}
 
 		return false;
@@ -156,7 +156,7 @@ class View implements ArrayAccess {
 		throw new \Exception("View [$view] doesn't exist.");
 	}
 
-	
+
 	/*public static function file($bundle, $view, $directory) removed */
 
 
@@ -335,7 +335,7 @@ class View implements ArrayAccess {
 	public function get()
 	{
 		global $post;
-		
+
 		$__data = $this->data();
 
 		// The contents of each view file is cached in an array for the
@@ -349,7 +349,7 @@ class View implements ArrayAccess {
 		// so we can avoid any WSOD errors. If an exception occurs we
 		// will throw it out to the exception handler.
 		try
-		{	
+		{
 			/*eval('?>'.$__contents);*/
 			include $this->path;
 		}
@@ -408,7 +408,7 @@ class View implements ArrayAccess {
 		// All nested views and responses are evaluated before the main view.
 		// This allows the assets used by nested views to be added to the
 		// asset container before the main view is evaluated.
-		foreach ($data as $key => $value) 
+		foreach ($data as $key => $value)
 		{
 			if ($value instanceof View or $value instanceof Response)
 			{

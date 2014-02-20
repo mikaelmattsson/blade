@@ -8,6 +8,9 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 **WordPress repository**: 
 [Blade](http://wordpress.org/plugins/blade/)
 
+**Blade Tutorial on YouTube**:
+[Video Tutorial](http://www.youtube.com/watch?v=H6JJtr0Frcs)
+
 ### Echo/print
 
 **Normal**

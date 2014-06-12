@@ -16,7 +16,7 @@ class WP_Blade {
 
 	public static function compile_acfrepeater( $value ){
 		$pattern = '/(\s*)@acfrepeater\(((\s*)(.+))\)/';
-		$replacement .= '$1<?php if ( get_field( $2 ) ) : ';
+		$replacement = '$1<?php if ( get_field( $2 ) ) : ';
 		$replacement .= 'while ( has_sub_field( $2 ) ) : ?>';
 
 		return preg_replace( $pattern, $replacement, $value );
@@ -24,7 +24,7 @@ class WP_Blade {
 
 	public static function compile_acfend( $value ){
 
-		return str_replace('@acfend', '<?php endwhile; endif; ?>', $value);	
+		return str_replace('@acfend', '<?php endwhile; endif; ?>', $value);
 	}
 
 	/**

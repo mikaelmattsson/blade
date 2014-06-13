@@ -321,7 +321,7 @@ class View implements ArrayAccess {
 
 		if (static::$render_count == 0)
 		{
-			Section::$sections = array();
+			//Section::$sections = array();
 		}
 
 		return $contents;

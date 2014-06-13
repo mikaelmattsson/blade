@@ -2,8 +2,8 @@
 Contributors: konvent
 Tags: Blade, Laravel, Template, Engine
 Requires at least: 3.0.0
-Tested up to: 3.8
-Stable tag: 0.3.5
+Tested up to: 3.9
+Stable tag: 0.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,10 @@ It is recommended thay you change the path to the location where the compiled vi
 
 
 == Changelog ==
+
+= 0.3.6 =
+* Fixed bug with incorrectly appending to unitialized variable. (perholmang)
+* Fixed issues when using multiple @section. (perholmang)
 
 = 0.3.5 =
 * Added support for child/parent-themes (perholmang)

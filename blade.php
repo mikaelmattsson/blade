@@ -4,7 +4,7 @@
 * Plugin Name: Blade
 * Plugin URI: https://github.com/MikaelMattsson/blade
 * Description: The Blade template engine developed by Taylor Otwell and used in Laravel. Enables the use of Blade in your template files.
-* Version: 0.3.6
+* Version: 0.3.7
 * Author: Mikael Mattsson
 * Author URI: http://www.wallmanderco.se
 *

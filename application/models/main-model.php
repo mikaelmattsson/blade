@@ -22,7 +22,7 @@ class WP_Blade_Main_Model {
 	/**
 	 * Blade template
 	 */
-	var $bladed_template;
+	var $bladedTemplate;
 
 	/**
 	 * Handle the compilation of the templates
@@ -31,9 +31,8 @@ class WP_Blade_Main_Model {
 	 */
 	public function template_include_blade( $template ) {
 
-		if( $this->bladed_template )
-			return $this->bladed_template;
-
+		if( $this->bladedTemplate )
+			return $this->bladedTemplate;
 		if( ! $template )
 			return $template; // Noting to do here. Come back later.
 
@@ -45,7 +44,7 @@ class WP_Blade_Main_Model {
 		$pathToCompiled = Laravel\Blade::compiled( $view->path );
 
 		if ( ! file_exists( $pathToCompiled ) or Laravel\Blade::expired( $view->view, $view->path ) )
-			file_put_contents( $pathToCompiled, Laravel\Blade::compile( $view ) );
+			file_put_contents( $pathToCompiled, "<?php // $template ?>\n".Laravel\Blade::compile( $view ) );
 
 		$view->path = $pathToCompiled;
 
@@ -54,7 +53,7 @@ class WP_Blade_Main_Model {
 		    //exit;
 		}
 
-		return $bladedTemplate = $view->path;
+		return $this->bladedTemplate = $view->path;
 
 	}
 

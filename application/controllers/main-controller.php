@@ -35,6 +35,9 @@ class WP_Blade_Main_Controller {
 		// Listen for page template filter
 		add_filter( 'page_template', array( $this->main_model, 'get_query_template' ) );
 
+		// Listen for Buddypress include action
+		add_filter( 'bp_template_include', array( $this->main_model, 'get_query_template' ));
+
 	}
 
 	/**

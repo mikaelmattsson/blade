@@ -188,8 +188,6 @@ class Blade {
 	 */
 	protected static function compile_comments($value)
 	{
-		$value = preg_replace('/\{\{--(.+?)(--\}\})?\n/', "<?php // $1 ?>", $value);
-
 		return preg_replace('/\{\{--((.|\s)*?)--\}\}/', "<?php /* $1 */ ?>\n", $value);
 	}
 

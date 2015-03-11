@@ -1,49 +1,40 @@
-WP Blade
-=======
+WordPress Blade
+===============
 
 Brings Laravel's great template engine, Blade, to WordPress. Just install and start using blade in your theme.
 
 Blade is the template engine for Laravel, a very popular php framework, developed by Taylor Otwell. This plugin brings the same template engine to WordPress. Using a template engine will result in much cleaner template files and quicker development. Normal php can still be used in the template files. The plugin also adds a WordPress specific snippet to blade. Check out the examples for more info.
 
-**WordPress repository**:
+**WordPress Repository**:
 [Blade](http://wordpress.org/plugins/blade/)
 
 **Blade Tutorial on YouTube**:
 [Video Tutorial](http://www.youtube.com/watch?v=H6JJtr0Frcs)
 
-### Echo/print
+### Echo/Print
 
-**Normal**
 ```php
+// Normal
+echo $foo;
 
-<?php echo $foo ?>
-```
-
-**Blade**
-```php
-
+// Blade
 {{ $foo }}
 ```
 
-### Post data
+### Post Data
 
-**Normal**
 ```php
+// Normal
+the_title();
 
-<?php the_title() ?>
-```
-
-**Blade**
-```php
-
+// Blade
 {{ the_title() }}
 ```
 
-### If statement
+### If Statements
 
 **Normal**
 ```php
-
 <?php if( has_post_thumbnail() ) : ?>
     <?php the_post_thumbnail() ?>
 <?php else: ?>
@@ -53,7 +44,6 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 
 **Blade**
 ```php
-
 @if( has_post_thumbnail() )
     {{ the_post_thumbnail() }}
 @else
@@ -61,11 +51,9 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 @endif
 ```
 
-
-### WordPress loop
+### WordPress Loop
 **Normal**
 ```php
-
 <ul>
 	<?php $query = new WP_Query( array( 'post_type' => 'post' ) ); ?>
 	<?php if ( $query->have_posts() ) : ?>
@@ -78,7 +66,7 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 </ul>
 ```
 
-**Blade.** WordPress specific snippet
+**Blade**
 ```php
 <ul>
 	@wpquery( array( 'post_type' => 'post' ) )
@@ -111,12 +99,11 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 </ul>
 ```
 
-### Including files
+### Including Files
 
 Files included with functions, e.g. `the_header()`, will not be compiled by Blade, however the php code in the file is still executed. To include a file with blade use:
 
 ```php
-
 @include( 'header' )
 ```
 
@@ -125,7 +112,7 @@ Note that you should not type “.php”.
 ### Layouts
 
 **master.php**
-```html
+```php
 <html>
     <div class="content">
         @yield( 'content' )
@@ -135,8 +122,7 @@ Note that you should not type “.php”.
 
 **page.php**
 
-```html
-
+```php
 @layout( 'master' )
 
 @section( 'content' )
@@ -144,11 +130,9 @@ Note that you should not type “.php”.
 @endsection
 ```
 
-
 ## Documentation
 
 Check out the complete [Blade Documentation](http://laravel3.veliovgroup.com/docs/views/templating#blade-template-engine) for more examples.
-
 
 ## Contributing
 

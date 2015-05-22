@@ -15,7 +15,7 @@ Blade is the template engine for Laravel, a very popular php framework, develope
 
 ```php
 // Normal
-echo $foo;
+<?php echo $foo; ?>
 
 // Blade
 {{ $foo }}
@@ -25,7 +25,7 @@ echo $foo;
 
 ```php
 // Normal
-the_title();
+<?php the_title(); ?>
 
 // Blade
 {{ the_title() }}

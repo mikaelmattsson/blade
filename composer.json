@@ -1,0 +1,19 @@
+{
+  "name": "mikaelmattsson/blade",
+  "description": "The Blade template engine developed by Taylor Otwell and used in Laravel. Enables the use of Blade in your template files.",
+  "keywords": ["wordpress", "plugin", "blade", "laravel", "templating"],
+  "homepage": "https://github.com/MikaelMattsson/blade",
+  "license": "GNUv2",
+  "authors": [
+    {
+      "name": "Mikael Mattsson",
+      "email": "mikael@weblyan.se",
+      "homepage": "http://www.wallmanderco.se"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.3.2",
+    "composer/installers": "v1.0.6"
+  }
+}

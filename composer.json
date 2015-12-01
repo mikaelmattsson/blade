@@ -1,5 +1,5 @@
 {
-  "name": "ekandreas/blade",
+  "name": "mikaelmattsson/blade",
   "version": "0.3.7",
   "description": "The Blade template engine developed by Taylor Otwell and used in Laravel. Enables the use of Blade in your template files. We use this with Bedrock.",
   "keywords": ["wordpress", "plugin", "blade", "laravel", "templating"],

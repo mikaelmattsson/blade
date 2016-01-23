@@ -27,7 +27,7 @@
 define( 'WP_BLADE_ROOT', dirname( __FILE__ ) . '/' );
 
 /**
-* Path for the application foler inside the theme
+* Path for the application folder inside the theme
 */
 define( 'WP_BLADE_APP_PATH', WP_BLADE_ROOT . 'application/' );
 

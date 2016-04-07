@@ -1,3 +1,5 @@
+###This plugin is deprecated in favor of [ekandreas/bladerunner](https://github.com/ekandreas/bladerunner)
+
 WordPress Blade
 ===============
 
